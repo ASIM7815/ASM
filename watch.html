@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Watch on RAOUFz">
+    <title>Watch - RAOUFz</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/watch.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="watch-page">
+    <!-- Back Button -->
+    <div class="back-navigation">
+        <a href="index.html" class="back-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M15 18L9 12L15 6"/>
+            </svg>
+            <span>Back to Browse</span>
+        </a>
+    </div>
+
+    <!-- Video Player Section -->
+    <section class="video-player-section">
+        <div class="video-container">
+            <video id="mainVideo" class="main-video" controls autoplay>
+                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            
+            <!-- Custom Video Controls Overlay -->
+            <div class="video-controls-overlay" id="videoControls">
+                <div class="controls-top">
+                    <div class="video-title-overlay">
+                        <h1>Stranger Things</h1>
+                        <div class="video-meta">
+                            <span>Season 4</span>
+                            <span>•</span>
+                            <span>Episode 1: The Hellfire Club</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="controls-bottom">
+                    <div class="progress-container">
+                        <div class="progress-bar-watch">
+                            <div class="progress-filled" id="progressFilled"></div>
+                            <div class="progress-handle" id="progressHandle"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="controls-buttons">
+                        <div class="controls-left">
+                            <button class="control-btn play-pause-btn" id="playPauseBtn">
+                                <svg class="icon-play" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5V19L19 12L8 5Z"/>
+                                </svg>
+                                <svg class="icon-pause hidden" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M6 4H10V20H6V4Z"/>
+                                    <path d="M14 4H18V20H14V4Z"/>
+                                </svg>
+                            </button>
+                            
+                            <button class="control-btn" id="rewindBtn" title="Rewind 10s">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M2.5 2V9H9.5"/>
+                                    <path d="M3 9C3 9 5.5 3 12 3C17.5 3 21 7 21 12C21 17 17.5 21 12 21C7.5 21 4.5 18 3.5 14"/>
+                                    <text x="12" y="15" font-size="8" fill="currentColor" text-anchor="middle">10</text>
+                                </svg>
+                            </button>
+                            
+                            <button class="control-btn" id="forwardBtn" title="Forward 10s">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21.5 2V9H14.5"/>
+                                    <path d="M21 9C21 9 18.5 3 12 3C6.5 3 3 7 3 12C3 17 6.5 21 12 21C16.5 21 19.5 18 20.5 14"/>
+                                    <text x="12" y="15" font-size="8" fill="currentColor" text-anchor="middle">10</text>
+                                </svg>
+                            </button>
+                            
+                            <div class="volume-control">
+                                <button class="control-btn" id="volumeBtn">
+                                    <svg class="icon-volume" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M11 5L6 9H2V15H6L11 19V5Z"/>
+                                        <path d="M15.54 8.46C16.4774 9.39764 17.0039 10.6692 17.0039 11.995C17.0039 13.3208 16.4774 14.5924 15.54 15.53" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                    <svg class="icon-mute hidden" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M11 5L6 9H2V15H6L11 19V5Z"/>
+                                        <path d="M23 9L17 15M17 9L23 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </button>
+                                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="100">
+                            </div>
+                            
+                            <div class="time-display">
+                                <span id="currentTime">0:00</span>
+                                <span> / </span>
+                                <span id="duration">0:00</span>
+                            </div>
+                        </div>
+                        
+                        <div class="controls-right">
+                            <button class="control-btn" id="nextEpisodeBtn" title="Next Episode">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M7 5L16 12L7 19V5Z"/>
+                                    <path d="M17 5H19V19H17V5Z"/>
+                                </svg>
+                            </button>
+                            
+                            <button class="control-btn" id="subsBtn" title="Subtitles">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="5" width="20" height="14" rx="2"/>
+                                    <path d="M6 15H10M14 15H18M6 11H8M10 11H14"/>
+                                </svg>
+                            </button>
+                            
+                            <button class="control-btn" id="settingsBtn" title="Settings">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"/>
+                                    <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22"/>
+                                </svg>
+                            </button>
+                            
+                            <button class="control-btn" id="fullscreenBtn" title="Fullscreen">
+                                <svg class="icon-fullscreen" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M8 3H5C3.89543 3 3 3.89543 3 5V8M21 8V5C21 3.89543 20.1046 3 19 3H16M16 21H19C20.1046 21 21 20.1046 21 19V16M3 16V19C3 20.1046 3.89543 21 5 21H8"/>
+                                </svg>
+                                <svg class="icon-exit-fullscreen hidden" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M8 3V8H3M16 3V8H21M16 21V16H21M8 21V16H3"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Episode Details Section -->
+    <section class="episode-details-section">
+        <div class="details-container">
+            <div class="details-main">
+                <h2 class="episode-title">Chapter One: The Hellfire Club</h2>
+                <div class="episode-meta">
+                    <span class="match">95% Match</span>
+                    <span class="year">2024</span>
+                    <span class="rating-badge">16+</span>
+                    <span class="quality">4K Ultra HD</span>
+                    <span class="audio">5.1</span>
+                </div>
+                <p class="episode-description">
+                    In the spring of 1986, the Hawkins gang are enjoying their senior year. However, when a terrifying new threat emerges, the gang must once again band together to save their town. As dark forces converge on Hawkins, they'll need all their strength and courage to face what's coming.
+                </p>
+                <div class="episode-cast">
+                    <p><strong>Cast:</strong> Millie Bobby Brown, Finn Wolfhard, Gaten Matarazzo, Caleb McLaughlin</p>
+                    <p><strong>Genres:</strong> Sci-Fi, Horror, Drama, Mystery</p>
+                    <p><strong>This episode:</strong> Thrilling, Suspenseful, Dark</p>
+                </div>
+            </div>
+            
+            <div class="details-sidebar">
+                <button class="action-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5V19M5 12H19"/>
+                    </svg>
+                    <span>My List</span>
+                </button>
+                <button class="action-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 9V5C14 3.89543 13.1046 3 12 3C10.8954 3 10 3.89543 10 5V9M7 11H17L16 21H8L7 11Z"/>
+                    </svg>
+                    <span>Rate</span>
+                </button>
+                <button class="action-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="18" cy="5" r="3"/>
+                        <circle cx="6" cy="12" r="3"/>
+                        <circle cx="18" cy="19" r="3"/>
+                        <path d="M8.59 13.51L15.42 17.49M15.41 6.51L8.59 10.49"/>
+                    </svg>
+                    <span>Share</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Episodes List -->
+    <section class="episodes-section">
+        <div class="episodes-container">
+            <div class="episodes-header">
+                <h3>Episodes</h3>
+                <select class="season-select">
+                    <option value="4">Season 4</option>
+                    <option value="3">Season 3</option>
+                    <option value="2">Season 2</option>
+                    <option value="1">Season 1</option>
+                </select>
+            </div>
+            
+            <div class="episodes-list">
+                <div class="episode-item active">
+                    <div class="episode-number">1</div>
+                    <div class="episode-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=300&h=170&fit=crop" alt="Episode 1">
+                        <div class="episode-duration">1h 18m</div>
+                    </div>
+                    <div class="episode-info">
+                        <div class="episode-info-header">
+                            <h4>1. Chapter One: The Hellfire Club</h4>
+                            <span class="episode-length">78m</span>
+                        </div>
+                        <p class="episode-synopsis">In the spring of 1986, the Hawkins gang are enjoying their senior year. However, when a terrifying new threat emerges...</p>
+                    </div>
+                </div>
+                
+                <div class="episode-item">
+                    <div class="episode-number">2</div>
+                    <div class="episode-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=300&h=170&fit=crop" alt="Episode 2">
+                        <div class="episode-duration">1h 15m</div>
+                        <div class="play-button-overlay">
+                            <svg width="40" height="40" viewBox="0 0 40 40">
+                                <circle cx="20" cy="20" r="18" stroke="white" stroke-width="2" fill="rgba(0,0,0,0.5)"/>
+                                <path d="M16 12L16 28L28 20L16 12Z" fill="white"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="episode-info">
+                        <div class="episode-info-header">
+                            <h4>2. Chapter Two: Vecna's Curse</h4>
+                            <span class="episode-length">75m</span>
+                        </div>
+                        <p class="episode-synopsis">A plane brings Mike to California along with a mysterious package. A popular player winds up in an unlikely situation.</p>
+                    </div>
+                </div>
+                
+                <div class="episode-item">
+                    <div class="episode-number">3</div>
+                    <div class="episode-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1594908900066-3f47337549d8?w=300&h=170&fit=crop" alt="Episode 3">
+                        <div class="episode-duration">1h 3m</div>
+                        <div class="play-button-overlay">
+                            <svg width="40" height="40" viewBox="0 0 40 40">
+                                <circle cx="20" cy="20" r="18" stroke="white" stroke-width="2" fill="rgba(0,0,0,0.5)"/>
+                                <path d="M16 12L16 28L28 20L16 12Z" fill="white"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="episode-info">
+                        <div class="episode-info-header">
+                            <h4>3. Chapter Three: The Monster and the Superhero</h4>
+                            <span class="episode-length">63m</span>
+                        </div>
+                        <p class="episode-synopsis">Murray and Joyce fly to Alaska, and El faces serious consequences. Robin and Nancy dig into Hawkins' history.</p>
+                    </div>
+                </div>
+                
+                <div class="episode-item">
+                    <div class="episode-number">4</div>
+                    <div class="episode-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?w=300&h=170&fit=crop" alt="Episode 4">
+                        <div class="episode-duration">1h 18m</div>
+                        <div class="play-button-overlay">
+                            <svg width="40" height="40" viewBox="0 0 40 40">
+                                <circle cx="20" cy="20" r="18" stroke="white" stroke-width="2" fill="rgba(0,0,0,0.5)"/>
+                                <path d="M16 12L16 28L28 20L16 12Z" fill="white"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="episode-info">
+                        <div class="episode-info-header">
+                            <h4>4. Chapter Four: Dear Billy</h4>
+                            <span class="episode-length">78m</span>
+                        </div>
+                        <p class="episode-synopsis">Max is in grave danger, and running out of time. A patient at Pennhurst asylum has visitors. Elsewhere, in Russia...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- More Like This -->
+    <section class="content-section">
+        <h3 class="section-title">More Like This</h3>
+        <div class="similar-grid">
+            <div class="similar-card">
+                <div class="similar-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&h=225&fit=crop" alt="Similar Show">
+                </div>
+                <div class="similar-info">
+                    <div class="similar-meta">
+                        <span class="match">88% Match</span>
+                        <span class="year">2023</span>
+                        <span class="rating-badge">16+</span>
+                        <span>3 Seasons</span>
+                    </div>
+                    <p class="similar-description">A mysterious time-travel thriller that keeps you on the edge of your seat with supernatural elements.</p>
+                    <p class="similar-genres">Mystery • Sci-Fi • Thriller</p>
+                </div>
+            </div>
+            
+            <div class="similar-card">
+                <div class="similar-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1574267432644-f770ff75e98e?w=400&h=225&fit=crop" alt="Similar Show">
+                </div>
+                <div class="similar-info">
+                    <div class="similar-meta">
+                        <span class="match">92% Match</span>
+                        <span class="year">2024</span>
+                        <span class="rating-badge">18+</span>
+                        <span>4 Seasons</span>
+                    </div>
+                    <p class="similar-description">A gripping crime drama following a family's descent into the criminal underworld.</p>
+                    <p class="similar-genres">Crime • Drama • Thriller</p>
+                </div>
+            </div>
+            
+            <div class="similar-card">
+                <div class="similar-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=400&h=225&fit=crop" alt="Similar Show">
+                </div>
+                <div class="similar-info">
+                    <div class="similar-meta">
+                        <span class="match">85% Match</span>
+                        <span class="year">2022</span>
+                        <span class="rating-badge">16+</span>
+                        <span>6 Seasons</span>
+                    </div>
+                    <p class="similar-description">An epic historical drama chronicling the reign of Queen Elizabeth II.</p>
+                    <p class="similar-genres">Historical • Drama • Biography</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-container">
+            <h3>About Stranger Things</h3>
+            <div class="about-grid">
+                <div class="about-item">
+                    <span class="about-label">Creators:</span>
+                    <span class="about-value">The Duffer Brothers</span>
+                </div>
+                <div class="about-item">
+                    <span class="about-label">Cast:</span>
+                    <span class="about-value">Millie Bobby Brown, Finn Wolfhard, Gaten Matarazzo, Caleb McLaughlin, Noah Schnapp, Sadie Sink, Natalia Dyer, Charlie Heaton, Joe Keery, Maya Hawke, Winona Ryder, David Harbour</span>
+                </div>
+                <div class="about-item">
+                    <span class="about-label">Genres:</span>
+                    <span class="about-value">TV Shows, US TV Shows, Teen TV Shows, Sci-Fi TV, Horror TV</span>
+                </div>
+                <div class="about-item">
+                    <span class="about-label">This show is:</span>
+                    <span class="about-value">Thrilling, Suspenseful, Dark</span>
+                </div>
+                <div class="about-item">
+                    <span class="about-label">Maturity rating:</span>
+                    <span class="about-value">16+ - Recommended for ages 16 and up</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/script.js"></script>
+    <script src="js/watch.js"></script>
+</body>
+</html>
